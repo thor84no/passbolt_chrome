@@ -1,0 +1,25 @@
+{
+  "name": "passbolt-chrome-extension",
+  "description": "Passbolt chrome extension",
+  "version": "0.0.1",
+  "license": "AGPL-3.0",
+  "homepage": "https://www.passbolt.com",
+  "copyright": "Copyright 2016, Bolt Softwares Private Ltd",
+  "author": "Bolt Softwares Pvt. Ltd. <contact@passbolt.com> (https://www.passbolt.com)",
+  "repository": "https://github.com/passbolt/chrome_extension",
+  "developers": [
+    "Kevin Muller <kevin@passbolt.com> (https://www.passbolt.com)",
+    "Remy Bertot <remy@passbolt.com> (https://www.passbolt.com)",
+    "Cédric Alfonsi <cedric@passbolt.com> (https://www.passbolt.com)"
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-chrome-extensions-reloaded": "^0.1.0",
+    "grunt-shell": "^1.1.1",
+    "passbolt-styleguide": "~1.0.0"
+  }
+}
