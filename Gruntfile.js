@@ -53,7 +53,7 @@ module.exports = function(grunt) {
           dest: '<%= config.webroot %>/css',
           expand: true
         }]
-      }
+      },
     },
     watch: {
       js: {
