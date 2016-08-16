@@ -7,17 +7,17 @@
   "icons": {
     "128": "skin/icon-128.png"
   },
-
   "background": {
     "page": "index.html"
   },
   "browser_action": {
     "default_icon": "skin/icon-19.png"
   },
-
   "permissions": [
     "activeTab",
-    "background"
+    "tabs",
+    "background",
+    "*://*/*"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

@@ -38,8 +38,7 @@ module.exports = function(grunt) {
           src: ['icon-19.png','icon-128.png'],
           dest: './skin',
           expand: true
-        },
-        {
+        },{
           // Images
           nonull: true,
           cwd: '<%= config.modules_path %>/<%= config.styleguide %>/src/img',
@@ -54,6 +53,16 @@ module.exports = function(grunt) {
           expand: true
         }]
       },
+      contentcode : {
+        files : [{
+          // jquery
+          nonull: true,
+          cwd: '<%= config.modules_path %>/jquery/dist/',
+          src: ['jquery.min.js'],
+          dest: '<%= config.webroot %>/js/vendors/',
+          expand: true
+        }]
+      }
     },
     watch: {
       js: {
@@ -80,5 +89,6 @@ module.exports = function(grunt) {
 
   // Styleguide update
   grunt.registerTask('styleguide-update', ['shell:updatestyleguide','copy:styleguide']);
+  grunt.registerTask('content-code-dependencies-update', ['copy:contentcode']);
 
 };
