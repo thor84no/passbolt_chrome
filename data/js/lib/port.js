@@ -7,10 +7,6 @@
 var self = self || {};
 
 (function (self) {
-
-  // TODO provide from pageMod
-  var portname = 'bootstrap';
-
   /**
    * Port Class Constructor
    * @param port
@@ -24,7 +20,8 @@ var self = self || {};
     if(typeof portname !== 'undefined') {
       this._portname = portname;
     } else {
-      throw Error('Port requires a portname to communicate to the addon code');
+      var msg = 'Port requires a portname to communicate to the addon code.';
+      throw Error(msg);
     }
     this._port = chrome.runtime.connect({name: this._portname});
     this._port.onMessage.addListener(function(msg) {
@@ -104,8 +101,13 @@ var self = self || {};
     this._port.postMessage(arguments);
   };
 
-  // Instance to be used by message and request
-  // Matching firefox synthax
-  self.port = new Port(portname);
-
+  // We create a port instance in self.port as global variable to match the firefox synthax
+  // this instance will be used by the message and request objects
+  // and subsequently any content code needing to communicate with the addon code
+  if(typeof portname == 'undefined') {
+    var msg = 'Portname is undefined. Make sure a portname is present in your PageMod contentScriptOptions';
+    throw Error(msg);
+  } else {
+    self.port = new Port(portname);
+  }
 })(self);
