@@ -104,10 +104,11 @@ var self = self || {};
   // We create a port instance in self.port as global variable to match the firefox synthax
   // this instance will be used by the message and request objects
   // and subsequently any content code needing to communicate with the addon code
-  if(typeof portname == 'undefined') {
+  if(typeof portname === 'undefined') {
     var msg = 'Portname is undefined. Make sure a portname is present in your PageMod contentScriptOptions';
     throw Error(msg);
   } else {
+    console.log(portname);
     self.port = new Port(portname);
   }
 })(self);

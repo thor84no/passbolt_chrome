@@ -10,6 +10,8 @@ passbolt.login = passbolt.login || {};
 
 $(function() {
 
+  console.log(testScriptOptions);
+
   var passphraseIframeId = 'passbolt-iframe-login-form';
 
   /**
