@@ -15,7 +15,7 @@ var passbolt = passbolt || {};
    * @type {{}}
    */
   var _stack = {};
-
+  
   /**
    * Perform an asynchronous request to the addon-code.
    *

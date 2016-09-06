@@ -23,6 +23,7 @@ var self = self || {};
       var msg = 'Port requires a portname to communicate to the addon code.';
       throw Error(msg);
     }
+    var now = Math.round(new Date().getTime());
     this._port = chrome.runtime.connect({name: this._portname});
     this._port.onMessage.addListener(function(msg) {
       _this._onMessage(msg);
@@ -107,8 +108,11 @@ var self = self || {};
   if(typeof portname === 'undefined') {
     var msg = 'Portname is undefined. Make sure a portname is present in your PageMod contentScriptOptions';
     throw Error(msg);
-  } else {
-    console.log(portname);
-    self.port = new Port(portname);
+  }
+  else {
+    if(typeof self.port === 'undefined') {
+      var now = Math.round(new Date().getTime());
+      self.port = new Port(portname);
+    }
   }
 })(self);

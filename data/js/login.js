@@ -9,8 +9,7 @@ var passbolt = passbolt || {};
 passbolt.login = passbolt.login || {};
 
 $(function() {
-
-  console.log(testScriptOptions);
+  console.log('LOGIN CONTENT CODE');
 
   var passphraseIframeId = 'passbolt-iframe-login-form';
 
@@ -29,8 +28,16 @@ $(function() {
 
     // See passboltAuthPagemod and login-form for the logic
     // inside the iframe
+
   };
 
+  $('.logo').click(function() {
+    // check if the plugin is configured
+    passbolt.request('passbolt.auth.verify')
+      .then(function (response) {
+        console.log('verified ok');
+      });
+  });
 
   /* ==================================================================================
    *  Content script init

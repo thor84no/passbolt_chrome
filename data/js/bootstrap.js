@@ -9,21 +9,25 @@ var passbolt = passbolt || {};
 passbolt.bootstrap = passbolt.bootstrap || {};
 
 (function($) {
+  console.log('BOOSTRAP CONTENT CODE');
 
   // check if the plugin is configured
-  passbolt.request('passbolt.addon.isConfigured')
-    .then(function (response) {
-      console.log('req1: this is cool');
-      if (response !== true) {
-        $('html')
-          .addClass('no-passboltplugin-config')
-          .removeClass('passboltplugin-config');
-      } else {
-        $('html')
-          .addClass('passboltplugin-config')
-          .removeClass('no-passboltplugin-config');
-      }
-    });
+  $('.plugin-check.firefox.error').click(function(){
+    console.log('requesting ' + portname);
+    passbolt.request('passbolt.addon.isConfigured')
+      .then(function (response) {
+        console.log('req1: this is cool');
+        if (response !== true) {
+          $('html')
+            .addClass('no-passboltplugin-config')
+            .removeClass('passboltplugin-config');
+        } else {
+          $('html')
+            .addClass('passboltplugin-config')
+            .removeClass('no-passboltplugin-config');
+        }
+      });
+  });
 
   passbolt.message.on('passbolt.message.test', function(arg1, arg2) {
     console.log('msg2: message received!' + arg1 + arg2);
