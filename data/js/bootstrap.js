@@ -13,10 +13,9 @@ passbolt.bootstrap = passbolt.bootstrap || {};
 
   // check if the plugin is configured
   $('.plugin-check.firefox.error').click(function(){
-    console.log('requesting ' + portname);
     passbolt.request('passbolt.addon.isConfigured')
       .then(function (response) {
-        console.log('req1: this is cool');
+        console.log('request works');
         if (response !== true) {
           $('html')
             .addClass('no-passboltplugin-config')
@@ -29,12 +28,8 @@ passbolt.bootstrap = passbolt.bootstrap || {};
       });
   });
 
-  passbolt.message.on('passbolt.message.test', function(arg1, arg2) {
-    console.log('msg2: message received!' + arg1 + arg2);
-  });
-
   passbolt.message.on('passbolt.message.test', function() {
-    console.log('msg3:' +'message received for another listener!');
+    console.log('message received for another worker');
   });
 
     // Add classes relative to plugin.

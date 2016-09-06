@@ -10,7 +10,14 @@ passbolt.login = passbolt.login || {};
 
 $(function() {
 
-  console.log('templatepath:' + templatePath);
-  alert('loginForm');
+  passbolt.request('passbolt.auth.verify')
+    .then(function (response) {
+      console.log('iframe request ok');
+    });
+
+  passbolt.message.on('passbolt.message.test', function() {
+    console.log('message received from another worker in iframe');
+  });
+
 
 });

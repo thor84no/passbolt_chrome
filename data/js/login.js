@@ -12,22 +12,27 @@ $(function() {
   console.log('LOGIN CONTENT CODE');
 
   var passphraseIframeId = 'passbolt-iframe-login-form';
+  var iframeUrl;
+
+  // @TODO more elegant browser check and iframe URL definition
+  if(typeof chrome !== 'undefined') {
+    iframeUrl = chrome.runtime.getURL('data/authForm.html');
+  } else {
+    iframeUrl = 'about:blank';
+  }
+  iframeUrl += '?passbolt=' + passphraseIframeId;
 
   /**
    * Insert the passphrase dialog
    */
   passbolt.login.onStep1RequestPassphrase = function () {
-
     // Inject the passphrase dialog iframe into the web page DOM.
     var $iframe = $('<iframe/>', {
       id: passphraseIframeId,
-      src: 'about:blank?passbolt=' + passphraseIframeId,
+      src: iframeUrl,
       frameBorder: 0
     });
     $('.login.form').empty().append($iframe);
-
-    // See passboltAuthPagemod and login-form for the logic
-    // inside the iframe
 
   };
 

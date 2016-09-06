@@ -102,17 +102,42 @@ var self = self || {};
     this._port.postMessage(arguments);
   };
 
-  // We create a port instance in self.port as global variable to match the firefox synthax
-  // this instance will be used by the message and request objects
-  // and subsequently any content code needing to communicate with the addon code
-  if(typeof portname === 'undefined') {
-    var msg = 'Portname is undefined. Make sure a portname is present in your PageMod contentScriptOptions';
-    throw Error(msg);
+  /*****************************************************************************
+   * Bootstrap the self.port object to be used by request and message
+   *****************************************************************************/
+  /**
+   * Parse url query variables to allow finding the portname in it
+   */
+  function parseUrlQuery() {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    var result = [];
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      result[pair[0]] = pair[1];
+    }
+    return result;
   }
-  else {
+
+  /**
+   * Create a port instance in self.port as global variable to match the firefox synthax
+   * this instance will be used by the message and request objects
+   * and subsequently any content code needing to communicate with the addon code
+   */
+  function initPort() {
+    if(typeof portname === 'undefined') {
+      var query = parseUrlQuery();
+      if(typeof query['passbolt'] !== 'undefined') {
+        portname = query['passbolt'];
+      } else {
+        var msg = 'Portname undefined for ' + window.location + '. The content code cannot communicate with the addon';
+        throw Error(msg);
+      }
+    }
     if(typeof self.port === 'undefined') {
-      var now = Math.round(new Date().getTime());
       self.port = new Port(portname);
     }
   }
+  initPort();
+
 })(self);
