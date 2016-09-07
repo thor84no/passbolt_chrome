@@ -9,8 +9,6 @@ var passbolt = passbolt || {};
 passbolt.login = passbolt.login || {};
 
 $(function() {
-  console.log('LOGIN CONTENT CODE');
-
   var passphraseIframeId = 'passbolt-iframe-login-form';
   var iframeUrl;
 

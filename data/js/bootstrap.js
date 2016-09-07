@@ -9,8 +9,6 @@ var passbolt = passbolt || {};
 passbolt.bootstrap = passbolt.bootstrap || {};
 
 (function($) {
-  console.log('BOOSTRAP CONTENT CODE');
-
   // check if the plugin is configured
   $('.plugin-check.firefox.error').click(function(){
     passbolt.request('passbolt.addon.isConfigured')
