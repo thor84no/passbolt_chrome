@@ -24,12 +24,14 @@ var self = self || {};
       throw Error(msg);
     }
     this._port = chrome.runtime.connect({name: this._portname});
+
     this._port.onDisconnect.addListener(function(){
-      //console.warn('content code port disconnected from addon code: ' + portname);
+      console.warn('port disconnected from addon code: ' + portname);
     });
     this._port.onMessage.addListener(function(msg) {
       _this._onMessage(msg);
     });
+
   };
 
   /**
@@ -142,5 +144,6 @@ var self = self || {};
 
   }
   initPort();
+  console.log('initport');
 
 })(self);
