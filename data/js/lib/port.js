@@ -144,6 +144,5 @@ var self = self || {};
 
   }
   initPort();
-  console.log('initport');
 
 })(self);
