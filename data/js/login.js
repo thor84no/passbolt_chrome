@@ -34,12 +34,21 @@ $(function() {
 
   };
 
-  $('.logo').click(function() {
-    // check if the plugin is configured
-    passbolt.request('passbolt.auth.verify')
-      .then(function (response) {
-        console.log('verified ok');
-      });
+  /**
+   *
+   */
+  passbolt.message.on('passbolt.auth.iframeTest', function() {
+    console.log('passbolt.auth.testIframe');
+    var $iframe = $('<iframe/>', {
+      id: 'passbolt-iframe-test',
+      src: chrome.runtime.getURL('data/iframeTest.html?passbolt=passbolt-iframe-test'),
+      frameBorder: 0
+    });
+    $('.login.form').append($iframe);
+  });
+
+  passbolt.message.on('passbolt.auth.iframeTest.close', function() {
+    $('#passbolt-iframe-test').remove();
   });
 
   /* ==================================================================================
