@@ -10,15 +10,13 @@ passbolt.login = passbolt.login || {};
 
 $(function() {
 
-  function createIframe() {
-    console.log('create iframe');
-    passbolt.request('passbolt.auth.iframeCreate')
-      .then(function (response) {
-        console.log('iframeCreated');
-        $('h1').text('create an iframe');
+  function filePrompt() {
+    passbolt.request('passbolt.file.prompt')
+      .then(function (fileContent) {
+        console.log(fileContent);
       });
   }
-  $('h1').click(createIframe);
+  $('h1').click(filePrompt);
 
   passbolt.message.on('passbolt.auth.dosomething', function() {
     $('h1').text('iframe talked back');

@@ -26,6 +26,16 @@ passbolt.bootstrap = passbolt.bootstrap || {};
       });
   });
 
+  $('a.button.github').click(function() {
+    console.log('upload');
+    passbolt.request('passbolt.file.upload')
+      .then(function (response) {
+        console.log('filecontent');
+        console.log(response);
+      });
+    return false;
+  });
+
   passbolt.message.on('passbolt.message.test', function() {
     console.log('message received for another worker');
   });
