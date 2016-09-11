@@ -27,7 +27,6 @@ passbolt.bootstrap = passbolt.bootstrap || {};
   });
 
   $('a.button.github').click(function() {
-    console.log('upload');
     passbolt.request('passbolt.file.upload')
       .then(function (response) {
         console.log('filecontent');

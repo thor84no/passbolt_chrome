@@ -7,13 +7,11 @@ $(function() {
         fileChooser.type = 'file';
 
         fileChooser.addEventListener('change', function () {
-          console.log("file upload");
           var file = fileChooser.files[0];
 
           var reader = new FileReader();
           reader.onload = function(){
             var data = reader.result;
-            console.log(data);
             sendResponse({data: data});
           };
           reader.readAsText(file);
